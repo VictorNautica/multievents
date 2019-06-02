@@ -7,7 +7,7 @@
 #' @param SP A shot put measurement, in m
 #' @param HJ A high jump measurement, in m
 #' @param X400m A 400m time, in seconds
-#' @param X110mh A 110m hurdle time, in seconds
+#' @param X110mh A 110m hurdles time, in seconds
 #' @param DT A discus throw measurement, in m
 #' @param PV A pole vault measurement, in m
 #' @param JT A javelin throw measurement, in m
