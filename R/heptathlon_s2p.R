@@ -1,4 +1,4 @@
-#' Convert decathlon scores in to points
+#' Convert heptathlon scores in to points
 #'
 #' \code{heptathlon_s2p} calculates scores for performances in the heptathlon, as
 #' well as providing useful descriptive and summary statistics.
@@ -63,8 +63,8 @@ fs <- sum(points_vector)
                         event = forcats::as_factor(c("110m Hurdles", "High Jump", "Shot put", "200m", "Long Jump", "Javelin Throw", "800m")),
                         score = sapply(c(X110mh, HJ, SP, X200m, LJ, JT, X800m),
                                        function(x){
-                                         if(x %in% c(X110mh, X200m) return(paste0(x,"s"))
-                                         if(x %in% c(HJ, SP, LJ, JT) return(paste0(x,"m"))
+                                         if(x %in% c(X110mh, X200m)) return(paste0(x,"s"))
+                                         if(x %in% c(HJ, SP, LJ, JT)) return(paste0(x,"m"))
                                          else return(seconds_to_period(X1500m) %>% tolower())
                                          }
                                        ),
