@@ -59,20 +59,20 @@ points_vector <- as.integer(c(points100m, pointslj, pointssp, pointshj, points40
     points110mh, pointsdt, pointspv, pointsjt, points1500m))
 fs <- sum(points_vector)
 
-  return(tibble::tibble(day = c(rep("One", 5), rep("Two", 5)),
-                        event = forcats::as_factor(c("100m", "Long Jump", "Shotput", "High Jump", "400m",
+  return(tibble::tibble(Day = c(rep("One", 5), rep("Two", 5)),
+                        Event = forcats::as_factor(c("100m", "Long Jump", "Shotput", "High Jump", "400m",
                                    "110m Hurdles", "Discus Throw", "Pole Vault", "Javelin Throw", "1500m")),
-                        score = sapply(c(X100m, LJ, SP, HJ, X400m, X110mh, DT, PV, JT, X1500m),
+                        Score = sapply(c(X100m, LJ, SP, HJ, X400m, X110mh, DT, PV, JT, X1500m),
                                        function(x){
                                          if(x %in% c(X100m, X400m, X110mh)) return(paste0(x,"s"))
                                          if(x %in% c(LJ, SP, HJ, DT, PV, JT)) return(paste0(x,"m"))
                                          else return(seconds_to_period(X1500m) %>% tolower())
                                          }
                                        ),
-                        points = points_vector,
-                        cumulative_points = cumsum(points_vector),
-                        proportion = MESS::round_percent(points_vector)/100,
-                        cumulative_proportion = cumsum((MESS::round_percent(points_vector)/100))
+                        Points = points_vector,
+                        `Cumulative Points` = cumsum(points_vector),
+                        `Proportion` = MESS::round_percent(points_vector)/100,
+                        `Cumulative Proportion` = cumsum((MESS::round_percent(points_vector)/100))
                         )
          )
 }
