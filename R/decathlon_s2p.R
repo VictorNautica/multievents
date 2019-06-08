@@ -55,8 +55,8 @@ library(dplyr); library(lubridate); library(MESS)
   pointsjt <- throws_func(JT, 10.14, 7, 1.08)
   points1500m <- runs_func(X1500m, 0.03768, 480, 1.85)
 
-points_vector <- c(points100m, pointslj, pointssp, pointshj, points400m,
-    points110mh, pointsdt, pointspv, pointsjt, points1500m)
+points_vector <- as.integer(c(points100m, pointslj, pointssp, pointshj, points400m,
+    points110mh, pointsdt, pointspv, pointsjt, points1500m))
 fs <- sum(points_vector)
 
   return(tibble::tibble(day = c(rep("One", 5), rep("Two", 5)),
