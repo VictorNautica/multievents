@@ -24,28 +24,6 @@ heptathlon_s2p <- function(X100mh = 100,
 
 library(dplyr); library(lubridate); library(MESS)
 
-  runs_func <- function(event, a, b, c) {
-    if (event < b) {
-      floor(a * ((b - event) ^ c))
-    } else {
-      return(0)
-    }
-  }
-  jumps_func <- function(event, a, b, c) {
-    if ((event*100) > b) {
-      floor(a * (((event * 100) - b) ^ c))
-    } else {
-      return(0)
-    }
-  }
-  throws_func <- function(event, a, b, c) {
-    if (event > b) {
-      floor(a * ((event - b) ^ c))
-    } else {
-      return(0)
-    }
-  }
-
 
   points100mh <- runs_func(X110mh, 4.99087, 42.5, 1.81)
   pointshj <- jumps_func(HJ, 1.84523, 75.0, 1.348)
