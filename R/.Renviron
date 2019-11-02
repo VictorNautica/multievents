@@ -1,0 +1,3 @@
+GCE_AUTH_FILE = "Z:/Strategy Unit/Projects/Current/450 Wolves VI Evaluation/Working Documents/Data/Google_exec/wolves-vi-cec4635a9eb8.json"
+GCE_DEFAULT_PROJECT_ID = "wolves-vi"
+GCE_DEFAULT_ZONE = "europe-west1-b"

@@ -19,31 +19,6 @@
 
 decathlon_s2p <- function(X100m, LJ, SP, HJ, X400m, X110mh, DT, PV, JT, X1500m) {
 
-library(dplyr); library(lubridate); library(MESS)
-
-  runs_func <- function(event, a, b, c) {
-    if (event < b) {
-      floor(a * ((b - event) ^ c))
-    } else {
-      return(0)
-    }
-  }
-  jumps_func <- function(event, a, b, c) {
-    if ((event*100) > b) {
-      floor(a * (((event * 100) - b) ^ c))
-    } else {
-      return(0)
-    }
-  }
-  throws_func <- function(event, a, b, c) {
-    if (event > b) {
-      floor(a * ((event - b) ^ c))
-    } else {
-      return(0)
-    }
-  }
-
-
   points100m <- runs_func(X100m, 25.4347, 18, 1.81)
   pointslj <- jumps_func(LJ, 0.14354, 220, 1.4)
   pointssp <- throws_func(SP, 51.39, 1.5, 1.05)
@@ -71,7 +46,7 @@ fs <- sum(points_vector)
                                        ),
                         Points = points_vector,
                         `Cumulative Points` = cumsum(points_vector),
-                        `Proportion` = MESS::round_percent(points_vector)/100,
+                        Proportion = MESS::round_percent(points_vector)/100,
                         `Cumulative Proportion` = cumsum((MESS::round_percent(points_vector)/100))
                         )
          )
