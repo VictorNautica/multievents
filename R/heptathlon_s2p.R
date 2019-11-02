@@ -16,10 +16,7 @@
 
 heptathlon_s2p <- function(X100mh, HJ, SP, X200m, LJ, JT, X800m) {
 
-library(dplyr); library(lubridate); library(MESS)
-
-
-  points100mh <- runs_func(X110mh, 4.99087, 42.5, 1.81)
+  points100mh <- runs_func(X100mh, 4.99087, 42.5, 1.81)
   pointshj <- jumps_func(HJ, 1.84523, 75.0, 1.348)
   pointssp <- throws_func(SP, 56.0211, 1.5, 1.05)
   points200m <- runs_func(X200m, 4.99087, 42.5, 1.81)
@@ -33,11 +30,11 @@ fs <- sum(points_vector)
 
   return(tibble::tibble(day = c(rep("One", 4), rep("Two", 3)),
                         event = forcats::as_factor(c("110m Hurdles", "High Jump", "Shot put", "200m", "Long Jump", "Javelin Throw", "800m")),
-                        score = sapply(c(X110mh, HJ, SP, X200m, LJ, JT, X800m),
+                        score = sapply(c(X100mh, HJ, SP, X200m, LJ, JT, X800m),
                                        function(x){
-                                         if(x %in% c(X110mh, X200m)) return(paste0(x,"s"))
+                                         if(x %in% c(X100mh, X200m)) return(paste0(x,"s"))
                                          if(x %in% c(HJ, SP, LJ, JT)) return(paste0(x,"m"))
-                                         else return(seconds_to_period(X1500m) %>% tolower())
+                                         else return(tolower(seconds_to_period(X1500m) %>% tolower()))
                                          }
                                        ),
                         points = points_vector,

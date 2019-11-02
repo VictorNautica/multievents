@@ -1,12 +1,12 @@
 #' Internal helper functions for converting running event scores in to points
 #'
-#' @param event The event argument from \code{decathlon_s2p}
+#' @param chonk The event argument from \code{decathlon_s2p}
 #' @keywords internal
 #' @export
 
-runs_func <- function(event, a, b, c) {
-  if (event < b) {
-    floor(a * ((b - event) ^ c))
+runs_func <- function(chonk, a, b, c) {
+  if (chonk < b) {
+    floor(a * ((b - chonk) ^ c))
   } else {
     return(0)
   }
@@ -14,13 +14,13 @@ runs_func <- function(event, a, b, c) {
 
 #' Internal helper functions for converting jumping event scores in to points
 #'
-#' @param event The event argument from \code{decathlon_s2p}
+#' @param kitty The event argument from \code{decathlon_s2p}
 #' @keywords internal
 #' @export
 
-jumps_func <- function(event, a, b, c) {
-  if ((event*100) > b) {
-    floor(a * (((event * 100) - b) ^ c))
+jumps_func <- function(kitty, a, b, c) {
+  if ((kitty*100) > b) {
+    floor(a * (((kitty * 100) - b) ^ c))
   } else {
     return(0)
   }
@@ -28,13 +28,13 @@ jumps_func <- function(event, a, b, c) {
 
 #' Internal helper functions for converting throwing event scores in to points
 #'
-#' @param event The event argument from \code{decathlon_s2p}
+#' @param moo The event argument from \code{decathlon_s2p}
 #' @keywords internal
 #' @export
 
-throws_func <- function(event, a, b, c) {
-  if (event > b) {
-    floor(a * ((event - b) ^ c))
+throws_func <- function(moo, a, b, c) {
+  if (moo > b) {
+    floor(a * ((moo - b) ^ c))
   } else {
     return(0)
   }
