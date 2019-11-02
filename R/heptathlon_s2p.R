@@ -14,13 +14,7 @@
 #'
 #' @export
 
-heptathlon_s2p <- function(X100mh = 100,
-                          HJ = 0,
-                          SP = 0,
-                          X200m = 100,
-                          LJ = 0,
-                          JT = 0,
-                          X800m = 500) {
+heptathlon_s2p <- function(X100mh, HJ, SP, X200m, LJ, JT, X800m) {
 
 library(dplyr); library(lubridate); library(MESS)
 
