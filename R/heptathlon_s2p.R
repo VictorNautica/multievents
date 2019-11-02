@@ -9,8 +9,6 @@
 #' @param LJ A long jump measurement, in m
 #' @param JT A javelin throw measurement, in m
 #' @param X800m A 800m time, in seconds
-#' @examples
-#' heptathlon_s2p(12.54, 2.01, 17.31, 22.3, 7.27, 60.9, 121.84)
 #'
 #' @export
 

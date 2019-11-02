@@ -12,8 +12,6 @@
 #' @param PV A pole vault measurement, in m
 #' @param JT A javelin throw measurement, in m
 #' @param X1500m A 1500m time, in seconds
-#' @examples
-#' decathlon_s2p(10.7, 8.02, 16, 2.15, 47.35, 13.6, 46.7, 4.90, 57.7, 280.75)
 #'
 #' @export
 
@@ -41,7 +39,7 @@ fs <- sum(points_vector)
                                        function(x){
                                          if(x %in% c(X100m, X400m, X110mh)) return(paste0(x,"s"))
                                          if(x %in% c(LJ, SP, HJ, DT, PV, JT)) return(paste0(x,"m"))
-                                         else return(tolowerseconds_to_period(X1500m))
+                                         else return(tolower(seconds_to_period(X1500m)))
                                          }
                                        ),
                         Points = points_vector,
