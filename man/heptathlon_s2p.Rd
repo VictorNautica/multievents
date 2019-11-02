@@ -7,7 +7,7 @@
 heptathlon_s2p(X100mh, HJ, SP, X200m, LJ, JT, X800m)
 }
 \arguments{
-\item{X100mh}{A 100m hurdle time, in seconds}
+\item{X100mh}{A 100m hurdles time, in seconds}
 
 \item{HJ}{A high jump measurement, in m}
 
@@ -26,6 +26,6 @@ heptathlon_s2p(X100mh, HJ, SP, X200m, LJ, JT, X800m)
 well as providing useful descriptive and summary statistics.
 }
 \examples{
-heptathlon_s2p(10.7, 8.02, 16, 2.15, 47.35, 13.6, 46.7, 4.90, 57.7, 280.75)
+heptathlon_s2p(12.54, 2.01, 17.31, 22.3, 7.27, 60.9, 121.84)
 
 }

@@ -17,7 +17,7 @@ decathlon_s2p(X100m, LJ, SP, HJ, X400m, X110mh, DT, PV, JT, X1500m)
 
 \item{X400m}{A 400m time, in seconds}
 
-\item{X110mh}{A 110m hurdle time, in seconds}
+\item{X110mh}{A 110m hurdles time, in seconds}
 
 \item{DT}{A discus throw measurement, in m}
 
