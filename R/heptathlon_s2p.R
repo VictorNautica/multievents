@@ -14,13 +14,13 @@
 
 heptathlon_s2p <- function(X100mh, HJ, SP, X200m, LJ, JT, X800m) {
 
-  points100mh <- runs_func(X100mh, 4.99087, 42.5, 1.81)
-  pointshj <- jumps_func(HJ, 1.84523, 75.0, 1.348)
-  pointssp <- throws_func(SP, 56.0211, 1.5, 1.05)
-  points200m <- runs_func(X200m, 4.99087, 42.5, 1.81)
-  pointslj <- jumps_func(LJ, 0.188807, 210, 1.41)
-  pointsjt <- throws_func(JT, 15.9803, 3.8, 1.04)
-  points800m <- runs_func(X800m, 0.11193, 254, 1.88)
+  points100mh <- hept_100mh(X100mh)
+  pointshj <- hept_hj(HJ)
+  pointssp <- hept_sp(SP)
+  points200m <- hept_200m(X200m)
+  pointslj <- hept_lj(LJ)
+  pointsjt <- hept_jt(JT)
+  points800m <- hept_800m(X800m)
 
 points_vector <- c(points100mh, pointshj, pointssp, points200m, pointslj,
     pointsjt, points800m)
