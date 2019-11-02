@@ -19,16 +19,16 @@
 
 decathlon_s2p <- function(X100m, LJ, SP, HJ, X400m, X110mh, DT, PV, JT, X1500m) {
 
-  points100m <- runs_func(X100m, 25.4347, 18, 1.81)
-  pointslj <- jumps_func(LJ, 0.14354, 220, 1.4)
-  pointssp <- throws_func(SP, 51.39, 1.5, 1.05)
-  pointshj <- jumps_func(HJ, 0.8465, 75, 1.42)
-  points400m <- runs_func(X400m, 1.53775, 82, 1.81)
-  points110mh <- runs_func(X110mh, 5.74352, 28.5, 1.92)
-  pointsdt <- throws_func(DT, 12.91, 4, 1.1)
-  pointspv <- jumps_func(PV, 0.2797, 100, 1.35)
-  pointsjt <- throws_func(JT, 10.14, 7, 1.08)
-  points1500m <- runs_func(X1500m, 0.03768, 480, 1.85)
+  points100m <- dec_100m(X100m)
+  pointslj <- dec_lj(LJ)
+  pointssp <- dec_sp(SP)
+  pointshj <- dec_hj(HJ)
+  points400m <- dec_400m(X400m)
+  points110mh <- dec_110mh(X110mh)
+  pointsdt <- dec_dt(DT)
+  pointspv <- dec_pv(PV)
+  pointsjt <- dec_jt(JT)
+  points1500m <- dec_1500m(X1500m)
 
 points_vector <- as.integer(c(points100m, pointslj, pointssp, pointshj, points400m,
     points110mh, pointsdt, pointspv, pointsjt, points1500m))
@@ -41,7 +41,7 @@ fs <- sum(points_vector)
                                        function(x){
                                          if(x %in% c(X100m, X400m, X110mh)) return(paste0(x,"s"))
                                          if(x %in% c(LJ, SP, HJ, DT, PV, JT)) return(paste0(x,"m"))
-                                         else return(seconds_to_period(X1500m) %>% tolower())
+                                         else return(tolowerseconds_to_period(X1500m))
                                          }
                                        ),
                         Points = points_vector,
