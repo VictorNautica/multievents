@@ -25,7 +25,3 @@ heptathlon_s2p(X100mh, HJ, SP, X200m, LJ, JT, X800m)
 \code{heptathlon_s2p} calculates scores for performances in the heptathlon, as
 well as providing useful descriptive and summary statistics.
 }
-\examples{
-heptathlon_s2p(12.54, 2.01, 17.31, 22.3, 7.27, 60.9, 121.84)
-
-}
