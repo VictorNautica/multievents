@@ -31,7 +31,3 @@ decathlon_s2p(X100m, LJ, SP, HJ, X400m, X110mh, DT, PV, JT, X1500m)
 \code{decathlon_s2p} calculates scores for performances in the decathlon, as
 well as providing useful descriptive and summary statistics.
 }
-\examples{
-decathlon_s2p(10.7, 8.02, 16, 2.15, 47.35, 13.6, 46.7, 4.90, 57.7, 280.75)
-
-}
