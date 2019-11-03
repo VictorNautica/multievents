@@ -32,7 +32,7 @@ fs <- sum(points_vector)
                                        function(x){
                                          if(x %in% c(X100mh, X200m)) return(paste0(x,"s"))
                                          if(x %in% c(HJ, SP, LJ, JT)) return(paste0(x,"m"))
-                                         else return(tolower(seconds_to_period(X800m) %>% tolower()))
+                                         else return(tolower(seconds_to_period(X800m)))
                                          }
                                        ),
                         points = points_vector,
