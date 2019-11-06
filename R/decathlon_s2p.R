@@ -39,7 +39,7 @@ fs <- sum(points_vector)
                                        function(x){
                                          if(x %in% c(X100m, X400m, X110mh)) return(paste0(x,"s"))
                                          if(x %in% c(LJ, SP, HJ, DT, PV, JT)) return(paste0(x,"m"))
-                                         else return(tolower(seconds_to_period(X1500m)))
+                                         else return(tolower(lubridate::seconds_to_period(X1500m)))
                                          }
                                        ),
                         Points = points_vector,
