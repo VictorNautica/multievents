@@ -1,7 +1,7 @@
 Package: multievents
 Type: Package
 Title: Calculate descriptive statistics and generate visualisations of completed multi-events
-Version: 0.1.0
+Version: 0.5.0
 Authors@R: person("Victor", "Yu", email = "victoryu@sent.com",
   role = c("aut", "cre"))
 Description: This package will calculate the points for each event 
