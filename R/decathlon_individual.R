@@ -108,9 +108,9 @@ dec_jt <- function(JT) throws_func(JT, 10.14, 7, 1.08)
 
 ## 1500m ####
 
-#' Convert decathlon javelin throw score in to points
+#' Convert decathlon 1500m score in to points
 
-#' @param X1500m A javelin throw measurement, in metres
+#' @param X1500m A 1500m time, in seconds
 
 #' @examples
 #' dec_1500m(238.70)
