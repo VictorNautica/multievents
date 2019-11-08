@@ -2,12 +2,12 @@
 % Please edit documentation in R/decathlon_grab.R
 \name{decathlon_grab}
 \alias{decathlon_grab}
-\title{Load specific decathlon event data}
+\title{Load decathlon event points data}
 \usage{
 decathlon_grab(filterEvent, filterYear, filterCountry, filterRank)
 }
 \arguments{
-\item{filterEvent}{Character vector of either \code{"olympics"}, \code{"world_championships"} or \code{"gotzis"}}
+\item{filterEvent}{Character vector of either \code{"olympics"}, \code{"world_championships"} or \code{"gotzis"}, or a combination of the major events.}
 
 \item{filterYear}{(Optional) Numeric vector filter for years}
 
@@ -16,7 +16,7 @@ decathlon_grab(filterEvent, filterYear, filterCountry, filterRank)
 \item{filterRank}{(Optional) Numeric vector filter for ranks}
 }
 \description{
-Load specific decathlon event data
+Load decathlon event points data
 }
 \examples{
 decathlon_grab("olympics", c(2000, 2008), c("EST", "USA"), 1:3)

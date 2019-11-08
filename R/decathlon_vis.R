@@ -3,16 +3,14 @@
 #' \code{decathlon_vis} creates a visualisation for an individual completed decathlon.
 #'
 #' @param ... Arguments to \code{decathlon_s2p}
-#' @examples
-#' decathlon_vis(11.01, 8.02, 16, 2.15, 47.35, 13.6, 46.7, 4.90, 57.7, 300)
 #'
 #' @export
 
 decathlon_vis <- function(...) {
 
-  extrafonts::loadfonts(device = "win", quiet = TRUE)
+  extrafont::loadfonts(device = "win", quiet = TRUE)
 
-  line_plot <- dplyr::select(decathlon_s2p(...), Event, Points, Score)
+  line_plot <- select(decathlon_s2p(...), Event, Points, Score)
 
   line_plot <-
     ggplot(line_plot, aes(Event, Points, group = 1, label = Score)) +
@@ -74,3 +72,6 @@ decathlon_vis <- function(...) {
 # ), bar)
 
 }
+
+## decathlon_vis(11.01, 8.02, 16, 2.15, 47.35, 13.6, 46.7, 4.90, 57.7, 300)
+## always problem with the example? why?
