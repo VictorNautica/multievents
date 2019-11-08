@@ -20,5 +20,6 @@ Imports:
 Suggests:
     forcats,
     lubridate,
-    tibble
+    tibble,
+    extrafont
 RoxygenNote: 6.1.1
