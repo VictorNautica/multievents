@@ -1,13 +1,13 @@
 Package: multievents
 Type: Package
 Title: Calculate descriptive statistics and generate visualisations of completed multi-events
-Version: 0.5.0
+Version: 0.5.1
 Authors@R: person("Victor", "Yu", email = "victoryu@sent.com",
   role = c("aut", "cre"))
 Description: This package will calculate the points for each event 
-    in the decathlon. In addition, it calculates useful descriptive 
-    summary statistics and creates visualisations which may be of 
-    interest to the athlete and/or coach.
+    in the decathlon and the heptathlon. In addition, it calculates 
+    useful descriptive summary statistics and creates visualisations
+    which may be of interest to the athlete and/or coach.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
