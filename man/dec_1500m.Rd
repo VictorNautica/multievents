@@ -2,15 +2,15 @@
 % Please edit documentation in R/decathlon_individual.R
 \name{dec_1500m}
 \alias{dec_1500m}
-\title{Convert decathlon javelin throw score in to points}
+\title{Convert decathlon 1500m score in to points}
 \usage{
 dec_1500m(X1500m)
 }
 \arguments{
-\item{X1500m}{A javelin throw measurement, in metres}
+\item{X1500m}{A 1500m time, in seconds}
 }
 \description{
-Convert decathlon javelin throw score in to points
+Convert decathlon 1500m score in to points
 }
 \examples{
 dec_1500m(238.70)

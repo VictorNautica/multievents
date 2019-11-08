@@ -1,0 +1,28 @@
+## decathlon_grab ####
+
+#' Load specific decathlon event data
+
+#' @param filterEvent Character vector of either \code{"olympics"}, \code{"world_championships"} or \code{"gotzis"}
+#' @param filterYear (Optional) Numeric vector filter for years
+#' @param filterCountry (Optional) Character vector filter for country codes
+#' @param filterRank (Optional) Numeric vector filter for ranks
+#' @examples
+#' decathlon_grab("olympics", c(2000, 2008), c("EST", "USA"), 1:3)
+#' @export
+
+decathlon_grab <- function(filterEvent, filterYear, filterCountry, filterRank) {
+    x <- decathlon_list[[filterEvent]]
+
+    param_filter <- function(param_name, truecolname) {
+      if (missing(param_name) == FALSE) {
+      x <- x[which(x[[truecolname]] %in% param_name), ]
+      }
+      return(x)
+    }
+
+    x <- param_filter(filterYear, "Year")
+    x <- param_filter(filterCountry, "Country")
+    x <- param_filter(filterRank, "Rank")
+
+    return(x)
+}
