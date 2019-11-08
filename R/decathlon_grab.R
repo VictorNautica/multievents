@@ -1,6 +1,6 @@
 ## decathlon_grab ####
 
-#' Load specific decathlon event data
+#' Load decathlon event points data
 
 #' @param filterEvent Character vector of either \code{"olympics"}, \code{"world_championships"} or \code{"gotzis"}, or a combination of the major events.
 #' @param filterYear (Optional) Numeric vector filter for years
