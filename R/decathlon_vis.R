@@ -4,13 +4,13 @@
 #'
 #' @param ... Arguments to \code{decathlon_s2p}
 #' @examples
-#' decathlon_vis(10.7, 8.02, 16, 2.15, 47.35, 13.6, 46.7, 4.90, 57.7, 280.75)
+#' decathlon_vis(11.01, 8.02, 16, 2.15, 47.35, 13.6, 46.7, 4.90, 57.7, 300)
 #'
 #' @export
 
 decathlon_vis <- function(...) {
-  library(gridExtra)
-  library(ggplot2)
+
+  extrafonts::loadfonts(device = "win", quiet = TRUE)
 
   line_plot <- dplyr::select(decathlon_s2p(...), Event, Points, Score)
 
@@ -74,5 +74,3 @@ decathlon_vis <- function(...) {
 # ), bar)
 
 }
-
-decathlon_vis(11.01, 8.02, 16, 2.15, 47.35, 13.6, 46.7, 4.90, 57.7, 300)
