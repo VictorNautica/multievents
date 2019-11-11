@@ -18,9 +18,9 @@ decathlon_grab <- function(filterEvent, filterYear, filterCountry, filterRank) {
     x <-
       bind_rows(decathlon_list_points[which(names(decathlon_list_points) %in% filterEvent)],
                 .id = "Major Event")
-    x$`Major Event` <- as_factor(moomoo$`Major Event`)
+    x$`Major Event` <- as_factor(x$`Major Event`)
     x$`Major Event` <- fct_recode(
-      moomoo$`Major Event`,
+      x$`Major Event`,
       "Olympics" = "olympics",
       "World Championships" = "world_championships",
       "G\u00f6tzis" = "gotzis"

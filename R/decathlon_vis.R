@@ -10,14 +10,14 @@ decathlon_vis <- function(...) {
 
   extrafont::loadfonts(device = "win", quiet = TRUE)
 
-  line_plot <- select(decathlon_s2p(...), Event, Points, Score)
+  convenient_table <- select(decathlon_s2p(...), Event, Points, Score)
 
   line_plot <-
-    ggplot(line_plot, aes(Event, Points, group = 1, label = Score)) +
+    ggplot(convenient_table, aes(Event, Points, group = 1, label = Score)) +
     geom_point() +
     geom_line() +
     geom_rect(
-      data = line_plot[1,],
+      data = convenient_table[1,],
       aes(
         xmin = 5.5,
         xmax = -Inf,
@@ -28,7 +28,7 @@ decathlon_vis <- function(...) {
       fill = "#fcba03"
     ) +
     geom_rect(
-      data = line_plot[1, ],
+      data = convenient_table[1, ],
       aes(
         xmin = 5.5,
         xmax = Inf,
