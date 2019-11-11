@@ -41,7 +41,7 @@ decathlon_vis <- function(...) {
     scale_y_continuous(breaks = seq(0,2000,100)) +
     ggrepel::geom_label_repel(segment.colour = NA,
                               family = "Segoe UI Light") +
-    theme(text = element_text(family = "Segoe UI Light", size = 18))
+    theme(text = element_text(family = "Segoe UI Light", size = 18), axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 
   return(line_plot)
 
