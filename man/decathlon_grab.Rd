@@ -11,7 +11,7 @@ decathlon_grab(filterEvent, filterYear, filterCountry, filterRank)
 
 \item{filterYear}{(Optional) Numeric vector filter for years}
 
-\item{filterCountry}{(Optional) Character vector filter for country codes}
+\item{filterCountry}{(Optional) Character vector filter for IOC country codes. These can be found on the pertinent \href{https://en.wikipedia.org/wiki/List_of_IOC_country_codes}{Wikipedia page}, or accessed through the CRAN package \code{countrycodes}}
 
 \item{filterRank}{(Optional) Numeric vector filter for ranks}
 }
