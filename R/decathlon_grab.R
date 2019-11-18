@@ -12,12 +12,15 @@
 
 decathlon_grab <- function(filterEvent = "all", filterYear, filterCountry, filterRank) {
 
-  if (length(filterEvent) == 1) {
+  if (!filterEvent %in% c("all", "olympics", "world_championships", "gotzis")) {
+    stop("Not valid event")
+  }
+
+  if (length(filterEvent) == 1 & !filterEvent %in% "all") {
     x <- decathlon_list_points[[filterEvent]]
-  } else if (filterEvent != "all") {
+  } else if (filterEvent %in% "all") {
     x <-
-      bind_rows(decathlon_list_points[which(names(decathlon_list_points) %in% filterEvent)],
-                .id = "Major Event")
+      bind_rows(decathlon_list_points, .id = "Major Event")
     x$`Major Event` <- as_factor(x$`Major Event`)
     x$`Major Event` <- fct_recode(
       x$`Major Event`,
@@ -27,7 +30,8 @@ decathlon_grab <- function(filterEvent = "all", filterYear, filterCountry, filte
     )
   } else {
     x <-
-      bind_rows(decathlon_list_points, .id = "Major Event")
+      bind_rows(decathlon_list_points[which(names(decathlon_list_points) %in% filterEvent)],
+                .id = "Major Event")
     x$`Major Event` <- as_factor(x$`Major Event`)
     x$`Major Event` <- fct_recode(
       x$`Major Event`,
