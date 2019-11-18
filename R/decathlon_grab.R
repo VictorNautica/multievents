@@ -12,13 +12,15 @@
 
 decathlon_grab <- function(filterEvent = "all", filterYear, filterCountry, filterRank) {
 
-  if (!filterEvent %in% c("all", "olympics", "world_championships", "gotzis")) {
-    stop("Not valid event")
+  if (any(!filterEvent %in% c("all", "olympics", "world_championships", "gotzis"))) {
+    stop("Invalid event entered")
+  } else if (length(filterEvent) > 1 & any(filterEvent %in% "all")){
+    stop("Invalid combination of events entered")
   }
 
-  if (length(filterEvent) == 1 & !filterEvent %in% "all") {
+  if (length(filterEvent) == 1 & any(filterEvent != "all")) {
     x <- decathlon_list_points[[filterEvent]]
-  } else if (filterEvent %in% "all") {
+  } else if (all(filterEvent == "all")) { ## all covers condition of length(filterEvent) == 1 anyways with 2+ length, don't need to repeat as second condition will need to be wrapped in either all or any anyways
     x <-
       bind_rows(decathlon_list_points, .id = "Major Event")
     x$`Major Event` <- as_factor(x$`Major Event`)
