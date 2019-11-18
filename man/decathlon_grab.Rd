@@ -7,7 +7,7 @@
 decathlon_grab(filterEvent, filterYear, filterCountry, filterRank)
 }
 \arguments{
-\item{filterEvent}{Character vector of either \code{"olympics"}, \code{"world_championships"} or \code{"gotzis"}, or a combination of the major events.}
+\item{filterEvent}{Character vector of either \code{"all"}, \code{"olympics"}, \code{"world_championships"}, \code{"gotzis"}, or a combination of the major events. Defaults to \code{"all"}.}
 
 \item{filterYear}{(Optional) Numeric vector filter for years}
 

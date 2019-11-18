@@ -10,11 +10,11 @@
 #' decathlon_grab("olympics", c(2000, 2008), c("EST", "USA"), 1:3)
 #' @export
 
-decathlon_grab <- function(filterEvent, filterYear, filterCountry, filterRank) {
+decathlon_grab <- function(filterEvent = "all", filterYear, filterCountry, filterRank) {
 
   if (length(filterEvent) == 1) {
     x <- decathlon_list_points[[filterEvent]]
-  } else {
+  } else if (filterEvent != "all") {
     x <-
       bind_rows(decathlon_list_points[which(names(decathlon_list_points) %in% filterEvent)],
                 .id = "Major Event")
@@ -25,6 +25,17 @@ decathlon_grab <- function(filterEvent, filterYear, filterCountry, filterRank) {
       "World Championships" = "world_championships",
       "G\u00f6tzis" = "gotzis"
     )
+  } else {
+    x <-
+      bind_rows(decathlon_list_points, .id = "Major Event")
+    x$`Major Event` <- as_factor(x$`Major Event`)
+    x$`Major Event` <- fct_recode(
+      x$`Major Event`,
+      "Olympics" = "olympics",
+      "World Championships" = "world_championships",
+      "G\u00f6tzis" = "gotzis"
+    )
+
   }
 
     param_filter <- function(param_name, truecolname) {
