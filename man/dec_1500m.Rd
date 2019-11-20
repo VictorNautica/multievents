@@ -7,7 +7,7 @@
 dec_1500m(X1500m)
 }
 \arguments{
-\item{X1500m}{A 1500m time, in seconds}
+\item{X1500m}{A 1500m time, in seconds, or in minutes:seconds (m:ss) as a character vector}
 }
 \description{
 Convert decathlon 1500m score in to points

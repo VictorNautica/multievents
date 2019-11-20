@@ -4,7 +4,8 @@
 \alias{decathlon_s2p}
 \title{Convert decathlon scores in to points}
 \usage{
-decathlon_s2p(X100m, LJ, SP, HJ, X400m, X110mh, DT, PV, JT, X1500m)
+decathlon_s2p(X100m = 9999, LJ = 0, SP = 0, HJ = 0, X400m = 9999,
+  X110mh = 9999, DT = 0, PV = 0, JT = 0, X1500m = 9999)
 }
 \arguments{
 \item{X100m}{A 100m time, in seconds}
@@ -25,7 +26,7 @@ decathlon_s2p(X100m, LJ, SP, HJ, X400m, X110mh, DT, PV, JT, X1500m)
 
 \item{JT}{A javelin throw measurement, in m}
 
-\item{X1500m}{A 1500m time, in seconds}
+\item{X1500m}{A 1500m time, in seconds, or in minutes:seconds (m:ss) as a character vector}
 }
 \description{
 \code{decathlon_s2p} calculates scores for performances in the decathlon, as

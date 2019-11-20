@@ -110,10 +110,18 @@ dec_jt <- function(JT) throws_func(JT, 10.14, 7, 1.08)
 
 #' Convert decathlon 1500m score in to points
 
-#' @param X1500m A 1500m time, in seconds
+#' @param X1500m A 1500m time, in seconds, or in minutes:seconds (m:ss) as a character vector
 
 #' @examples
 #' dec_1500m(238.70)
 #' @export
 
-dec_1500m <- function(X1500m) runs_func(X1500m, 0.03768, 480, 1.85)
+dec_1500m <- function(X1500m) {
+  if (is.numeric(X1500m)) runs_func(X1500m, 0.03768, 480, 1.85)
+  else {
+    minutes_convert <- as.numeric(regmatches(X1500m, regexpr("[[:digit:]](?=:)", X1500m, perl = T)))*60
+    seconds_convert <- as.numeric(regmatches(X1500m, regexpr("(?<=:)[[:digit:]]{0,2}\\.[[:digit:]]{0,2}", X1500m, perl = T)))
+    runs_func(minutes_convert+seconds_convert, 0.03768, 480, 1.85)
+
+  }
+}

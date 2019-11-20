@@ -2,9 +2,9 @@
 
 #' Load decathlon event points data
 
-#' @param filterEvent Character vector of either \code{"olympics"}, \code{"world_championships"} or \code{"gotzis"}, or a combination of the major events.
+#' @param filterEvent Character vector of either \code{"all"}, \code{"olympics"}, \code{"world_championships"}, \code{"gotzis"}, or a combination of the major events. Defaults to \code{"all"}.
 #' @param filterYear (Optional) Numeric vector filter for years
-#' @param filterCountry (Optional) Character vector filter for country codes
+#' @param filterCountry (Optional) Character vector filter for IOC country codes. These can be found on the pertinent \href{https://en.wikipedia.org/wiki/List_of_IOC_country_codes}{Wikipedia page}, or accessed through the CRAN package \code{countrycode}.
 #' @param filterRank (Optional) Numeric vector filter for ranks
 #' @examples
 #' decathlon_grab("olympics", c(2000, 2008), c("EST", "USA"), 1:3)
@@ -31,16 +31,20 @@ decathlon_grab <- function(filterEvent = "all", filterYear, filterCountry, filte
       "G\u00f6tzis" = "gotzis"
     )
   } else {
+
     x <-
       bind_rows(decathlon_list_points[which(names(decathlon_list_points) %in% filterEvent)],
                 .id = "Major Event")
     x$`Major Event` <- as_factor(x$`Major Event`)
-    x$`Major Event` <- fct_recode(
-      x$`Major Event`,
-      "Olympics" = "olympics",
-      "World Championships" = "world_championships",
-      "G\u00f6tzis" = "gotzis"
-    )
+    x$`Major Event` <- suppressWarnings({
+      fct_recode(
+        x$`Major Event`,
+        "Olympics" = "olympics",
+        "World Championships" = "world_championships",
+        "G\u00f6tzis" = "gotzis"
+      )
+    })
+
 
   }
 

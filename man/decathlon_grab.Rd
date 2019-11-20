@@ -4,14 +4,15 @@
 \alias{decathlon_grab}
 \title{Load decathlon event points data}
 \usage{
-decathlon_grab(filterEvent, filterYear, filterCountry, filterRank)
+decathlon_grab(filterEvent = "all", filterYear, filterCountry,
+  filterRank)
 }
 \arguments{
 \item{filterEvent}{Character vector of either \code{"all"}, \code{"olympics"}, \code{"world_championships"}, \code{"gotzis"}, or a combination of the major events. Defaults to \code{"all"}.}
 
 \item{filterYear}{(Optional) Numeric vector filter for years}
 
-\item{filterCountry}{(Optional) Character vector filter for IOC country codes. These can be found on the pertinent \href{https://en.wikipedia.org/wiki/List_of_IOC_country_codes}{Wikipedia page}, or accessed through the CRAN package \code{countrycode}}
+\item{filterCountry}{(Optional) Character vector filter for IOC country codes. These can be found on the pertinent \href{https://en.wikipedia.org/wiki/List_of_IOC_country_codes}{Wikipedia page}, or accessed through the CRAN package \code{countrycode}.}
 
 \item{filterRank}{(Optional) Numeric vector filter for ranks}
 }
