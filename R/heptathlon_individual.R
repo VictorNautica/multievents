@@ -8,7 +8,7 @@
 #' hept_100mh(12.54)
 #' @export
 
-hept_100mh <- function(X100mh) runs_func(X100mh, 4.99087, 42.5, 1.81)
+hept_100mh <- function(X100mh) runs_func(X100mh, 9.23076, 26.7, 1.835)
 
 ## HJ ####
 
