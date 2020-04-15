@@ -26,19 +26,33 @@ points_vector <- c(points100mh, pointshj, pointssp, points200m, pointslj,
     pointsjt, points800m)
 fs <- sum(points_vector)
 
-  return(tibble::tibble(day = c(rep("One", 4), rep("Two", 3)),
-                        event = forcats::as_factor(c("110m Hurdles", "High Jump", "Shot put", "200m", "Long Jump", "Javelin Throw", "800m")),
-                        score = sapply(c(X100mh, HJ, SP, X200m, LJ, JT, X800m),
-                                       function(x){
-                                         if(x %in% c(X100mh, X200m)) return(paste0(x,"s"))
-                                         if(x %in% c(HJ, SP, LJ, JT)) return(paste0(x,"m"))
-                                         else return(tolower(lubridate::seconds_to_period(X800m)))
-                                         }
-                                       ),
-                        points = points_vector,
-                        cumulative_points = cumsum(points_vector),
-                        proportion = MESS::round_percent(points_vector)/100,
-                        cumulative_proportion = cumsum((MESS::round_percent(points_vector)/100))
+score_list <- list("100mh" = X100mh,
+                   "HJ" = HJ,
+                   "SP" = SP,
+                   "200m" = X200m,
+                   "LJ" = LJ,
+                   "JT" = JT,
+                   "800m" = X800m)
+
+  return(tibble::tibble(Day = c(rep("One", 4), rep("Two", 3)),
+                        Event = forcats::as_factor(c("110m Hurdles", "High Jump", "Shot put", "200m", "Long Jump", "Javelin Throw", "800m")),
+                        Score = unlist(purrr::imap(score_list,
+                                                   function(x, y){
+                                                     if(y %in% c("110mh", "200m")) return(paste0(x,"s"))
+                                                     if(y %in% c("LJ", "SP", "HJ", "JT")) return(paste0(x,"m"))
+                                                     if (y == "800m") {
+                                                       if (is.numeric(x)) {
+                                                         return(tolower(lubridate::seconds_to_period(x)))
+                                                       } else {
+                                                         return(paste0(x, "s"))
+                                                       }
+                                                     }
+                                                   }
+                        ), use.names = F),
+                        Points = points_vector,
+                        `Cumulative Points` = cumsum(points_vector),
+                        Proportion = MESS::round_percent(points_vector)/100,
+                        `Cumulative Proportion` = cumsum((MESS::round_percent(points_vector)/100))
                         )
          )
 }

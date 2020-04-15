@@ -4,8 +4,18 @@
 \alias{decathlon_s2p}
 \title{Convert decathlon scores in to points}
 \usage{
-decathlon_s2p(X100m = 9999, LJ = 0, SP = 0, HJ = 0, X400m = 9999,
-  X110mh = 9999, DT = 0, PV = 0, JT = 0, X1500m = 9999)
+decathlon_s2p(
+  X100m = 9999,
+  LJ = 0,
+  SP = 0,
+  HJ = 0,
+  X400m = 9999,
+  X110mh = 9999,
+  DT = 0,
+  PV = 0,
+  JT = 0,
+  X1500m = 9999
+)
 }
 \arguments{
 \item{X100m}{A 100m time, in seconds}

@@ -4,8 +4,7 @@
 \alias{decathlon_grab}
 \title{Load decathlon event points data}
 \usage{
-decathlon_grab(filterEvent = "all", filterYear, filterCountry,
-  filterRank)
+decathlon_grab(filterEvent = "all", filterYear, filterCountry, filterRank)
 }
 \arguments{
 \item{filterEvent}{Character vector of either \code{"all"}, \code{"olympics"}, \code{"world_championships"}, \code{"gotzis"}, or a combination of the major events. Defaults to \code{"all"}.}

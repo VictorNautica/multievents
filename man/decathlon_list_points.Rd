@@ -4,7 +4,8 @@
 \name{decathlon_list_points}
 \alias{decathlon_list_points}
 \title{List object containing decathlon data points}
-\format{A list object with three tibbles (for each of the major events) each containing 16 rows:
+\format{
+A list object with three tibbles (for each of the major events) each containing 16 rows:
 \describe{
 \item{Year}{Year of event}
 \item{date}{Date of first day of the decathlon}
@@ -22,7 +23,8 @@
 \item{PV}{Numeric vector}
 \item{JT}{Numeric vector}
 \item{1500m}{Numeric vector}
-}}
+}
+}
 \source{
 Most of the data were admittedly initially collected from Wikipedia (during the days of where my R skills were lacking), then later cross-checked and verified from official websites including \url{http://www.euromeetings.org/history.asp?id=8}, \url{https://www.sports-reference.com}, \url{https://www.iaaf.org}, \url{https://www.decathlon2000.com/}, with additional testing done through converting raw measurements and times through own functions.
 }
