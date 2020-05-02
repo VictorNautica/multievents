@@ -70,6 +70,7 @@ score_list <- list("100m" = X100m,
                                        ), use.names = F),
                         Points = points_vector,
                         `Cumulative Points` = cumsum(points_vector),
+                        `Average Points` = as.integer(imap(cumsum(points_vector), ~ round(.x/.y, 0))),
                         Proportion = MESS::round_percent(points_vector)/100,
                         `Cumulative Proportion` = cumsum((MESS::round_percent(points_vector)/100))
                         )

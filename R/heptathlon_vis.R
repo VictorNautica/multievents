@@ -1,16 +1,17 @@
-#' Create visualisation of decathlon scores
+#' Create visualisation of heptathlon scores
 #'
-#' \code{decathlon_vis} creates a visualisation for an individual completed decathlon.
+#' \code{heptathlon_vis} creates a visualisation for an individual completed heptathlon.
 #'
-#' @param ... Arguments to \code{decathlon_s2p}
+#' @param ... Arguments to \code{heptathlon_s2p}
 #'
 #' @export
+#'
 
-decathlon_vis <- function(...) {
+heptathlon_vis <- function(...){
 
   extrafont::loadfonts(device = "win", quiet = TRUE)
 
-  convenient_table <- dplyr::select(decathlon_s2p(...), Event, Points, Score, `Average Points`)
+  convenient_table <- dplyr::select(heptathlon_s2p(...), Event, Points, Score, `Average Points`)
   convenient_table <- convenient_table %>% rename(`Individual Points` = "Points") %>% pivot_longer(cols = c(`Individual Points`, `Average Points`))
 
   myplot <-
@@ -24,7 +25,7 @@ decathlon_vis <- function(...) {
            )) +
     annotation_raster(
       alpha("darkgrey", .25),
-      xmin = 5.5,
+      xmin = 4.5,
       xmax = Inf,
       ymin = -Inf,
       ymax = Inf
@@ -51,6 +52,3 @@ decathlon_vis <- function(...) {
   return(myplot)
 
 }
-
-## decathlon_vis(11.01, 8.02, 16, 2.15, 47.35, 13.6, 46.7, 4.90, 57.7, 300)
-## always problem with the example? why?
