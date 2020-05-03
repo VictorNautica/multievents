@@ -8,8 +8,6 @@
 
 decathlon_vis <- function(...) {
 
-  extrafont::loadfonts(device = "win", quiet = TRUE)
-
   convenient_table <- dplyr::select(decathlon_s2p(...), Event, Points, Score, `Average Points`)
   convenient_table <- convenient_table %>% rename(`Individual Points` = "Points") %>% pivot_longer(cols = c(`Individual Points`, `Average Points`))
 
@@ -38,11 +36,10 @@ decathlon_vis <- function(...) {
         x[seq(1, 20, by = 2),],
       colour = "black",
       vjust = -9999,
-      segment.color = NA,
-      family = "Segoe UI Light"
+      segment.color = NA
     ) +
     theme(
-      text = element_text(family = "Segoe UI Light", size = 18),
+      text = element_text(size = 18),
       legend.position = "top",
       legend.title = element_blank()
     ) +
