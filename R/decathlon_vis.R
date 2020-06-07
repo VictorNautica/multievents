@@ -29,18 +29,20 @@ decathlon_vis <- function(...) {
     ) + ## from https://github.com/tidyverse/ggplot2/issues/3184
     geom_point(aes(colour = name)) +
     geom_line(aes(colour = name)) +
-    scale_y_continuous(breaks = seq(0, 2000, 100)) +
-    scale_x_discrete(guide = guide_axis(n.dodge = 2)) +
+    scale_y_continuous(breaks = seq(0, 2000, 100),
+                       limits = c(min(convenient_table$value)-100, max(convenient_table$value, na.rm = T)+100)) +
+    scale_x_discrete(labels = function(x) str_replace_all(x, " ", "\n")) +
     ggrepel::geom_label_repel(
       data = function(x)
         x[seq(1, 20, by = 2),],
       colour = "black",
       vjust = -9999,
-      segment.color = NA
+      segment.color = NA,
+      family = "Segoe UI"
     ) +
     theme(
-      text = element_text(size = 18),
-      legend.position = "top",
+      text = element_text(family = "Segoe UI", size = 18),
+      legend.position = "bottom",
       legend.title = element_blank()
     ) +
     labs(y = "Points")

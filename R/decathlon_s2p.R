@@ -15,27 +15,27 @@
 #'
 #' @export
 
-decathlon_s2p <- function(X100m = 9999,
-                          LJ = 0,
-                          SP = 0,
-                          HJ = 0,
-                          X400m = 9999,
-                          X110mh = 9999,
-                          DT = 0,
-                          PV = 0,
-                          JT = 0,
-                          X1500m = 9999) {
+decathlon_s2p <- function(X100m = NA,
+                          LJ = NA,
+                          SP = NA,
+                          HJ = NA,
+                          X400m = NA,
+                          X110mh = NA,
+                          DT = NA,
+                          PV = NA,
+                          JT = NA,
+                          X1500m = NA) {
 
-  points100m <- dec_100m(X100m)
-  pointslj <- dec_lj(LJ)
-  pointssp <- dec_sp(SP)
-  pointshj <- dec_hj(HJ)
-  points400m <- dec_400m(X400m)
-  points110mh <- dec_110mh(X110mh)
-  pointsdt <- dec_dt(DT)
-  pointspv <- dec_pv(PV)
-  pointsjt <- dec_jt(JT)
-  points1500m <- dec_1500m(X1500m)
+  points100m <- if (is.na(X100m)) NA else dec_100m(X100m)
+  pointslj <- if (is.na(LJ)) NA else dec_lj(2)
+  pointssp <- if (is.na(SP)) NA else dec_sp(SP)
+  pointshj <- if (is.na(HJ)) NA else dec_hj(HJ)
+  points400m <- if (is.na(X400m)) NA else dec_400m(X400m)
+  points110mh <- if (is.na(X110mh)) NA else dec_110mh(X110mh)
+  pointsdt <- if (is.na(DT)) NA else dec_dt(DT)
+  pointspv <- if (is.na(PV)) NA else dec_pv(PV)
+  pointsjt <- if (is.na(JT)) NA else dec_jt(JT)
+  points1500m <- if (is.na(X1500m)) NA else dec_1500m(X1500m)
 
 points_vector <- as.integer(c(points100m, pointslj, pointssp, pointshj, points400m,
     points110mh, pointsdt, pointspv, pointsjt, points1500m))
@@ -52,27 +52,56 @@ score_list <- list("100m" = X100m,
                    "JT" = JT,
                    "1500m" = X1500m)
 
-  return(tibble::tibble(Day = c(rep("One", 5), rep("Two", 5)),
-                        Event = forcats::as_factor(c("100m", "Long Jump", "Shotput", "High Jump", "400m",
-                                   "110m Hurdles", "Discus Throw", "Pole Vault", "Javelin Throw", "1500m")),
-                        Score = unlist(purrr::imap(score_list,
-                                       function(x, y){
-                                         if(y %in% c("100m", "400m", "110mh")) return(paste0(x,"s"))
-                                         if(y %in% c("LJ", "SP", "HJ", "DT", "PV", "JT")) return(paste0(x,"m"))
-                                         if (y == "1500m") {
-                                           if (is.numeric(x)) {
-                                           return(tolower(lubridate::seconds_to_period(x)))
-                                         } else {
-                                           return(paste0(x, "s"))
-                                         }
-                                         }
-                                       }
-                                       ), use.names = F),
-                        Points = points_vector,
-                        `Cumulative Points` = cumsum(points_vector),
-                        `Average Points` = as.integer(imap(cumsum(points_vector), ~ round(.x/.y, 0))),
-                        Proportion = MESS::round_percent(points_vector)/100,
-                        `Cumulative Proportion` = cumsum((MESS::round_percent(points_vector)/100))
-                        )
-         )
+return(
+  tibble::tibble(
+    Day = c(rep("One", 5), rep("Two", 5)),
+    Event = forcats::as_factor(
+      c(
+        "100m",
+        "Long Jump",
+        "Shot Put",
+        "High Jump",
+        "400m",
+        "110m Hurdles",
+        "Discus Throw",
+        "Pole Vault",
+        "Javelin Throw",
+        "1500m"
+      )
+    ),
+    Score = unlist(purrr::imap(score_list,
+                               function(x, y) {
+                                 if (is.na(x))
+                                   return(NA)
+                                 else {
+                                   if (y %in% c("100m", "400m", "110mh"))
+                                     return(paste0(x, "s"))
+                                   if (y %in% c("LJ", "SP", "HJ", "DT", "PV", "JT"))
+                                     return(paste0(x, "m"))
+                                   if (y == "1500m") {
+                                     if (is.numeric(x)) {
+                                       return(tolower(lubridate::seconds_to_period(x)))
+                                     } else {
+                                       return(paste0(x, "s"))
+                                     }
+                                   }
+                                 }
+                               }), use.names = F),
+    Points = points_vector,
+    `Cumulative Points` = as.integer(cumsum(replace_na(points_vector, 0))),
+    `Average Points` = as.integer(imap(cumsum(
+      replace_na(points_vector, 0)
+    ), ~ round(.x / .y, 0))),
+    Proportion = if (sum(replace_na(points_vector, 0)) == 0)
+      NA
+    else {
+      MESS::round_percent(replace_na(points_vector, 0)) / 100
+    },
+    `Cumulative Proportion` = if (sum(replace_na(points_vector, 0)) == 0)
+      NA
+    else {
+      cumsum((MESS::round_percent(replace_na(points_vector, 0)) / 100))
+    }
+  )
+)
 }
