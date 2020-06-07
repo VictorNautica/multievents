@@ -27,7 +27,7 @@ decathlon_s2p <- function(X100m = NA,
                           X1500m = NA) {
 
   points100m <- if (is.na(X100m)) NA else dec_100m(X100m)
-  pointslj <- if (is.na(LJ)) NA else dec_lj(2)
+  pointslj <- if (is.na(LJ)) NA else dec_lj(LJ)
   pointssp <- if (is.na(SP)) NA else dec_sp(SP)
   pointshj <- if (is.na(HJ)) NA else dec_hj(HJ)
   points400m <- if (is.na(X400m)) NA else dec_400m(X400m)
